@@ -23,6 +23,7 @@ import (
 // TestSetupCrossArch tests that the lb commands are set up correctly for cross arch compilation
 func TestSetupCrossArch(t *testing.T) {
 	t.Run("test_setup_cross_arch", func(t *testing.T) {
+		t.Parallel()
 		if runtime.GOARCH == "s390x" || runtime.GOARCH == "ppc64le" {
 			t.Skipf("No qemu-user-static available on %s", runtime.GOARCH)
 		}
@@ -59,6 +60,7 @@ func TestSetupCrossArch(t *testing.T) {
 // TestFailedSetupLiveBuildCommands tests failures in the setupLiveBuildCommands helper function
 func TestFailedSetupLiveBuildCommands(t *testing.T) {
 	t.Run("test_failed_setup_live_build_commands", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		// set up a temp dir for this
 		os.MkdirAll(testDir, 0755)
@@ -94,6 +96,7 @@ func TestFailedSetupLiveBuildCommands(t *testing.T) {
 // TestMaxOffset tests the functionality of the maxOffset function
 func TestMaxOffset(t *testing.T) {
 	t.Run("test_max_offset", func(t *testing.T) {
+		t.Parallel()
 		lesser := quantity.Offset(0)
 		greater := quantity.Offset(1)
 
@@ -112,6 +115,7 @@ func TestMaxOffset(t *testing.T) {
 // functions and calling hook scripts that intentionally return errors
 func TestFailedRunHooks(t *testing.T) {
 	t.Run("test_failed_run_hooks", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -147,6 +151,7 @@ func TestFailedRunHooks(t *testing.T) {
 // TestFailedHandleSecureBoot tests failures in the handleSecureBoot function by mocking functions
 func TestFailedHandleSecureBoot(t *testing.T) {
 	t.Run("test_failed_handle_secure_boot", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -198,6 +203,7 @@ func TestFailedHandleSecureBoot(t *testing.T) {
 // function by mocking functions, for piboot
 func TestFailedHandleSecureBootPiboot(t *testing.T) {
 	t.Run("test_failed_handle_secure_boot_piboot", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -249,6 +255,7 @@ func TestFailedHandleSecureBootPiboot(t *testing.T) {
 // TestHandleLkBootloader tests that the handleLkBootloader function runs successfully
 func TestHandleLkBootloader(t *testing.T) {
 	t.Run("test_handle_lk_bootloader", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -286,6 +293,7 @@ func TestHandleLkBootloader(t *testing.T) {
 // TestFailedHandleLkBootloader tests failures in handleLkBootloader by mocking functions
 func TestFailedHandleLkBootloader(t *testing.T) {
 	t.Run("test_failed_handle_lk_bootloader", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -341,6 +349,7 @@ func TestFailedHandleLkBootloader(t *testing.T) {
 // functions and setting invalid bs= arguments in dd
 func TestFailedCopyStructureContent(t *testing.T) {
 	t.Run("test_failed_copy_structure_content", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -422,6 +431,7 @@ func TestFailedCopyStructureContent(t *testing.T) {
 // state machine has finished running
 func TestCleanup(t *testing.T) {
 	t.Run("test_cleanup", func(t *testing.T) {
+		t.Parallel()
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
 		stateMachine.Run()
@@ -436,6 +446,7 @@ func TestCleanup(t *testing.T) {
 // TestFailedCleanup tests a failure in os.RemoveAll while deleting the temporary directory
 func TestFailedCleanup(t *testing.T) {
 	t.Run("test_failed_cleanup", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -454,6 +465,7 @@ func TestFailedCleanup(t *testing.T) {
 // with a nil pointer to stateMachine.GadgetInfo
 func TestFailedCalculateImageSize(t *testing.T) {
 	t.Run("test_failed_calculate_image_size", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -465,6 +477,7 @@ func TestFailedCalculateImageSize(t *testing.T) {
 // TestFailedWriteOffsetValues tests various error scenarios for writeOffsetValues
 func TestFailedWriteOffsetValues(t *testing.T) {
 	t.Run("test_failed_write_offset_values", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -507,6 +520,7 @@ func TestFailedWriteOffsetValues(t *testing.T) {
 // It also ensures that the size is corrected in the structure struct
 func TestWarningRootfsSizeTooSmall(t *testing.T) {
 	t.Run("test_warning_rootfs_size_too_small", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -658,6 +672,7 @@ func TestGenerateUniqueDiskID(t *testing.T) {
 // TestFailedRemovePreseeding tests various failure scenarios in the removePreseeding function
 func TestFailedRemovePreseeding(t *testing.T) {
 	t.Run("test_failed_remove_preseeding", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()

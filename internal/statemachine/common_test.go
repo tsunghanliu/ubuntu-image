@@ -52,6 +52,7 @@ func TestMakeTemporaryDirectories(t *testing.T) {
 // TestFailedMakeTemporaryDirectories tests some failed executions of the make_temporary_directories state
 func TestFailedMakeTemporaryDirectories(t *testing.T) {
 	t.Run("test_failed_mkdir", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -88,6 +89,7 @@ func TestFailedMakeTemporaryDirectories(t *testing.T) {
 // directory is preserved if the relevant environment variable is set
 func TestLoadGadgetYaml(t *testing.T) {
 	t.Run("test_load_gadget_yaml", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -122,6 +124,7 @@ func TestLoadGadgetYaml(t *testing.T) {
 // os.MkdirAll, iotuil.ReadFile, osutil.CopyFile, and osutil.CopySpecialFile
 func TestFailedLoadGadgetYaml(t *testing.T) {
 	t.Run("test_failed_load_gadget_yaml", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -275,6 +278,7 @@ func TestFailedPopulateRootfsContentsHooks(t *testing.T) {
 // TestGenerateDiskInfo tests that diskInfo can be generated
 func TestGenerateDiskInfo(t *testing.T) {
 	t.Run("test_generate_disk_info", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -302,6 +306,7 @@ func TestGenerateDiskInfo(t *testing.T) {
 // TestFailedGenerateDiskInfo tests failure scenarios in the generate_disk_info state
 func TestFailedGenerateDiskInfo(t *testing.T) {
 	t.Run("test_failed_generate_disk_info", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -338,6 +343,7 @@ func TestFailedGenerateDiskInfo(t *testing.T) {
 // verifying that the size is calculated correctly
 func TestCalculateRootfsSize(t *testing.T) {
 	t.Run("test_calculate_rootfs_size", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -373,6 +379,7 @@ func TestCalculateRootfsSize(t *testing.T) {
 // this is accomplished by setting rootfs to a directory that does not exist
 func TestFailedCalculateRootfsSize(t *testing.T) {
 	t.Run("test_failed_calculate_rootfs_size", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -387,6 +394,7 @@ func TestFailedCalculateRootfsSize(t *testing.T) {
 // and ensures that the appropriate files are placed in the bootfs
 func TestPopulateBootfsContents(t *testing.T) {
 	t.Run("test_populate_bootfs_contents", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -433,6 +441,7 @@ func TestPopulateBootfsContents(t *testing.T) {
 // placed in the bootfs, for the piboot bootloader.
 func TestPopulateBootfsContentsPiboot(t *testing.T) {
 	t.Run("test_populate_bootfs_contents_piboot", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -477,6 +486,7 @@ func TestPopulateBootfsContentsPiboot(t *testing.T) {
 // TestFailedPopulateBootfsContents tests failures in the populateBootfsContents state
 func TestFailedPopulateBootfsContents(t *testing.T) {
 	t.Run("test_failed_populate_bootfs_contents", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -552,6 +562,7 @@ func TestFailedPopulateBootfsContents(t *testing.T) {
 // the rootfs size are corrected
 func TestPopulatePreparePartitions(t *testing.T) {
 	t.Run("test_populate_prepare_partitions", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -616,6 +627,7 @@ func TestPopulatePreparePartitions(t *testing.T) {
 // TestFailedPopulatePreparePartitions tests failures in the populatePreparePartitions state
 func TestFailedPopulatePreparePartitions(t *testing.T) {
 	t.Run("test_failed_populate_prepare_partitions", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -675,6 +687,7 @@ func TestFailedPopulatePreparePartitions(t *testing.T) {
 // has been created for it (LP: #1947863)
 func TestEmptyPartPopulatePreparePartitions(t *testing.T) {
 	t.Run("test_empty_part_populate_prepare_partitions", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -832,6 +845,7 @@ func TestMakeDiskPartitionSchemes(t *testing.T) {
 // TestFailedMakeDisk tests failures in the MakeDisk state
 func TestFailedMakeDisk(t *testing.T) {
 	t.Run("test_failed_make_disk", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()

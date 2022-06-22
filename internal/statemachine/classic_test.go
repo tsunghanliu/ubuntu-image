@@ -49,6 +49,7 @@ func TestInvalidCommandLineClassic(t *testing.T) {
 // TestFailedValidateInputClassic tests a failure in the Setup() function when validating common input
 func TestFailedValidateInputClassic(t *testing.T) {
 	t.Run("test_failed_validate_input", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -68,6 +69,7 @@ func TestFailedValidateInputClassic(t *testing.T) {
 // TestFailedReadMetadataClassic tests a failed metadata read by passing --resume with no previous partial state machine run
 func TestFailedReadMetadataClassic(t *testing.T) {
 	t.Run("test_failed_read_metadata", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -88,6 +90,7 @@ func TestFailedReadMetadataClassic(t *testing.T) {
 // are placed in the correct locations
 func TestPrepareGadgetTree(t *testing.T) {
 	t.Run("test_prepare_gadget_tree", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine ClassicStateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -111,6 +114,7 @@ func TestPrepareGadgetTree(t *testing.T) {
 // TestFailedPrepareGadgetTree tests failures in os, osutil, and ioutil libraries
 func TestFailedPrepareGadgetTree(t *testing.T) {
 	t.Run("test_failed_prepare_gadget_tree", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine ClassicStateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -212,6 +216,7 @@ func TestFailedLiveBuildCommands(t *testing.T) {
 // by passing an architecture for which there is no qemu-static binary
 func TestNoStatic(t *testing.T) {
 	t.Run("test_no_qemu_static", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -241,6 +246,7 @@ func TestNoStatic(t *testing.T) {
 // the rootfs to ensure at least some of the correct file are in place
 func TestPopulateClassicRootfsContents(t *testing.T) {
 	t.Run("test_populate_classic_rootfs_contents", func(t *testing.T) {
+		t.Parallel()
 		if runtime.GOARCH != "amd64" {
 			t.Skip("Test for amd64 only")
 		}
@@ -315,6 +321,7 @@ func TestPopulateClassicRootfsContents(t *testing.T) {
 // this is accomplished by mocking functions
 func TestFailedPopulateClassicRootfsContents(t *testing.T) {
 	t.Run("test_failed_populate_classic_rootfs_contents", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine ClassicStateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -386,6 +393,7 @@ func TestFailedPopulateClassicRootfsContents(t *testing.T) {
 // to the rootfs directory
 func TestFilesystemFlag(t *testing.T) {
 	t.Run("test_filesystem_flag", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine ClassicStateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -422,6 +430,7 @@ func TestFilesystemFlag(t *testing.T) {
 // TestGeneratePackageManifest tests if classic image manifest generation works
 func TestGeneratePackageManifest(t *testing.T) {
 	t.Run("test_generate_package_manifest", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 
 		// Setup the exec.Command mock
@@ -461,6 +470,7 @@ func TestGeneratePackageManifest(t *testing.T) {
 // TestFailedGeneratePackageManifest tests if classic manifest generation failures are reported
 func TestFailedGeneratePackageManifest(t *testing.T) {
 	t.Run("test_failed_generate_package_manifest", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 
 		// Setup the exec.Command mock - version from the success test
@@ -489,6 +499,7 @@ func TestFailedGeneratePackageManifest(t *testing.T) {
 // caused by actual failures in the `lb` commands
 func TestFailedRunLiveBuild(t *testing.T) {
 	t.Run("test_failed_run_live_build", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 
 		var stateMachine ClassicStateMachine
@@ -548,6 +559,7 @@ func TestFailedRunLiveBuild(t *testing.T) {
 // in the resulting root filesystem
 func TestExtraSnapsWithFilesystem(t *testing.T) {
 	t.Run("test_extra_snaps_with_filesystem", func(t *testing.T) {
+		t.Parallel()
 		if runtime.GOARCH != "amd64" {
 			t.Skip("Test for amd64 only")
 		}
@@ -600,6 +612,7 @@ func TestExtraSnapsWithFilesystem(t *testing.T) {
 // TestFailedPrepareClassiImage tests various failure scenarios in the prepateClassicImage function
 func TestFailedPrepareClassicImage(t *testing.T) {
 	t.Run("test_failed_prepare_classic_image", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine ClassicStateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()

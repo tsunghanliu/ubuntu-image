@@ -290,6 +290,7 @@ func TestInvalidStateMachineArgs(t *testing.T) {
 // TestDebug ensures that the name of the states is printed when the --debug flag is used
 func TestDebug(t *testing.T) {
 	t.Run("test_debug", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		workDir := "ubuntu-image-test-debug"
 		if err := os.Mkdir("ubuntu-image-test-debug", 0755); err != nil {
@@ -369,6 +370,7 @@ func TestFunctionErrors(t *testing.T) {
 // TestSetCommonOpts ensures that the function actually sets the correct values in the struct
 func TestSetCommonOpts(t *testing.T) {
 	t.Run("test_set_common_opts", func(t *testing.T) {
+		t.Parallel()
 		commonOpts := new(commands.CommonOpts)
 		stateMachineOpts := new(commands.StateMachineOpts)
 		commonOpts.Debug = true
@@ -387,6 +389,7 @@ func TestSetCommonOpts(t *testing.T) {
 // by giving the state machine a syntactically invalid metadata file to parse
 func TestFailedMetadataParse(t *testing.T) {
 	t.Run("test_failed_metadata_parse", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -537,6 +540,7 @@ func TestHandleContentSizes(t *testing.T) {
 // os.MkdirAll
 func TestFailedPostProcessGadgetYaml(t *testing.T) {
 	t.Run("test_failed_post_process_gadget_yaml", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
