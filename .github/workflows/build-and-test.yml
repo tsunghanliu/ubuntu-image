@@ -18,6 +18,6 @@ jobs:
       - name: install-test-dependencies
         run: sudo apt install -y snapd mtools germinate fdisk gdisk qemu-system-aarch64 qemu-user-static
       - name: test
-        run: sudo go test -timeout 0 -v -race -coverprofile=coverage.out -covermode=atomic ./...
+        run: sudo go test -timeout 0 -v -race -coverprofile=coverage.out -covermode=atomic -parallel 8 ./...
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)

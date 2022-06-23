@@ -22,6 +22,7 @@ import (
 // TestClassicSetup tests a successful run of the polymorphed Setup function
 func TestClassicSetup(t *testing.T) {
 	t.Run("test_classic_setup", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -79,6 +80,7 @@ func TestYAMLSchemaParsing(t *testing.T) {
 // failure cases in the parseImageDefinition state
 func TestFailedParseImageDefinition(t *testing.T) {
 	t.Run("test_failed_parse_image_definition", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -169,6 +171,7 @@ func TestCalculateStates(t *testing.T) {
 // TestPrintStates ensures the states are printed to stdout when the flag is set
 func TestPrintStates(t *testing.T) {
 	t.Run("test_print_states", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -220,6 +223,7 @@ func TestPrintStates(t *testing.T) {
 // TestFailedValidateInputClassic tests a failure in the Setup() function when validating common input
 func TestFailedValidateInputClassic(t *testing.T) {
 	t.Run("test_failed_validate_input", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -239,6 +243,7 @@ func TestFailedValidateInputClassic(t *testing.T) {
 // TestFailedReadMetadataClassic tests a failed metadata read by passing --resume with no previous partial state machine run
 func TestFailedReadMetadataClassic(t *testing.T) {
 	t.Run("test_failed_read_metadata", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -259,6 +264,7 @@ func TestFailedReadMetadataClassic(t *testing.T) {
 // are placed in the correct locations
 func TestPrepareGadgetTree(t *testing.T) {
 	t.Run("test_prepare_gadget_tree", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -274,6 +280,7 @@ func TestPrepareGadgetTree(t *testing.T) {
 // TestFailedPrepareGadgetTree tests failures in os, osutil, and ioutil libraries
 func TestFailedPrepareGadgetTree(t *testing.T) {
 	t.Run("test_failed_prepare_gadget_tree", func(t *testing.T) {
+		t.Parallel()
 		// currently a no-op, waiting for prepareGadgetTree
 		// to be converted to the new ubuntu-image classic
 		// design. This will have ubuntu-image build the
@@ -286,6 +293,7 @@ func TestFailedPrepareGadgetTree(t *testing.T) {
 // TestBuildRootfsFromSeed unit tests the buildRootfsFromSeed function
 func TestBuildRootfsFromSeed(t *testing.T) {
 	t.Run("test_build_rootfs_from_seed", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -301,6 +309,7 @@ func TestBuildRootfsFromSeed(t *testing.T) {
 // TestBuildRootfsFromTasks unit tests the buildRootfsFromTasks function
 func TestBuildRootfsFromTasks(t *testing.T) {
 	t.Run("test_build_rootfs_from_tasks", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -316,6 +325,7 @@ func TestBuildRootfsFromTasks(t *testing.T) {
 // TestExtractRootfsTar unit tests the extractRootfsTar function
 func TestExtractRootfsTar(t *testing.T) {
 	t.Run("test_extract_rootfs_tar", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -331,6 +341,7 @@ func TestExtractRootfsTar(t *testing.T) {
 // TestCustomizeCloudInit unit tests the customizeCloudInit function
 func TestCustomizeCloudInit(t *testing.T) {
 	t.Run("test_customize_cloud_init", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -346,6 +357,7 @@ func TestCustomizeCloudInit(t *testing.T) {
 // TestSetupExtraPPAs unit tests the setupExtraPPAs function
 func TestSetupExtraPPAs(t *testing.T) {
 	t.Run("test_setup_extra_PPAs", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -361,6 +373,7 @@ func TestSetupExtraPPAs(t *testing.T) {
 // TestInstallExtraPackages unit tests the installExtraPackages function
 func TestInstallExtraPackages(t *testing.T) {
 	t.Run("test_install_extra_packages", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -376,6 +389,7 @@ func TestInstallExtraPackages(t *testing.T) {
 // TestManualCustomization unit tests the manualCustomization function
 func TestManualCustomization(t *testing.T) {
 	t.Run("test_manual_customization", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -391,6 +405,7 @@ func TestManualCustomization(t *testing.T) {
 // TestPrepareClassicImage unit tests the prepareClassicImage function
 func TestPrepareClassicImage(t *testing.T) {
 	t.Run("test_prepare_classic_image", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -466,6 +481,7 @@ func TestPrepareClassicImage(t *testing.T) {
 // the rootfs to ensure at least some of the correct file are in place
 func TestPopulateClassicRootfsContents(t *testing.T) {
 	t.Run("test_populate_classic_rootfs_contents", func(t *testing.T) {
+		t.Parallel()
 		if runtime.GOARCH != "amd64" {
 			t.Skip("Test for amd64 only")
 		}
@@ -638,6 +654,7 @@ func TestFilesystemFlag(t *testing.T) {
 // TestGeneratePackageManifest tests if classic image manifest generation works
 func TestGeneratePackageManifest(t *testing.T) {
 	t.Run("test_generate_package_manifest", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 
 		// Setup the exec.Command mock
@@ -830,6 +847,7 @@ func TestFailedPrepareClassicImage(t *testing.T) {
 // it is successful
 func TestSuccessfulClassicRun(t *testing.T) {
 	t.Run("test_successful_classic_run", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -878,6 +896,7 @@ func TestCheckEmptyFields(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("test_check_empty_fields_"+tc.name, func(t *testing.T) {
+			t.Parallel()
 			asserter := helper.Asserter{T: t}
 
 			result := new(gojsonschema.Result)
@@ -941,6 +960,7 @@ func TestGerminate(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("test_germinate_"+tc.name, func(t *testing.T) {
+			t.Parallel()
 			asserter := helper.Asserter{T: t}
 			saveCWD := helper.SaveCWD()
 			defer saveCWD()
@@ -1010,6 +1030,7 @@ func TestGerminate(t *testing.T) {
 // failure cases in the germinate state
 func TestFailedGerminate(t *testing.T) {
 	t.Run("test_failed_germinate", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -1074,6 +1095,7 @@ func TestFailedGerminate(t *testing.T) {
 // TestBuildGadgetTree tests the successful build of a gadget tree
 func TestBuildGadgetTree(t *testing.T) {
 	t.Run("test_build_gadget_tree", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -1121,6 +1143,7 @@ func TestBuildGadgetTree(t *testing.T) {
 // TestFailedBuildGadgetTree tests failures in the  buildGadgetTree function
 func TestFailedBuildGadgetTree(t *testing.T) {
 	t.Run("test_failed_build_gadget_tree", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()

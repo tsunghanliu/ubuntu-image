@@ -24,6 +24,7 @@ import (
 // TestFailedValidateInputSnap tests a failure in the Setup() function when validating common input
 func TestFailedValidateInputSnap(t *testing.T) {
 	t.Run("test_failed_validate_input", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -43,6 +44,7 @@ func TestFailedValidateInputSnap(t *testing.T) {
 // TestFailedReadMetadataSnap tests a failed metadata read by passing --resume with no previous partial state machine run
 func TestFailedReadMetadataSnap(t *testing.T) {
 	t.Run("test_failed_read_metadata", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -62,6 +64,7 @@ func TestFailedReadMetadataSnap(t *testing.T) {
 // TestSuccessfulSnapCore20 builds a core 20 image and makes sure the factory boot flag is set
 func TestSuccessfulSnapCore20(t *testing.T) {
 	t.Run("test_successful_snap_run", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -100,6 +103,7 @@ func TestSuccessfulSnapCore20(t *testing.T) {
 // TestSuccessfulSnapCore18 builds a core 18 image with a few special options
 func TestSuccessfulSnapCore18(t *testing.T) {
 	t.Run("test_successful_snap_options", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -169,6 +173,7 @@ func TestSuccessfulSnapCore18(t *testing.T) {
 // by attempting to use --disable-console-conf with a core20 image
 func TestFailedPrepareImage(t *testing.T) {
 	t.Run("test_failed_prepare_image", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -203,6 +208,7 @@ func TestPopulateSnapRootfsContents(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("test "+tc.name, func(t *testing.T) {
+			t.Parallel()
 			asserter := helper.Asserter{T: t}
 			saveCWD := helper.SaveCWD()
 			defer saveCWD()
@@ -246,6 +252,7 @@ func TestGenerateSnapManifest(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("test_generate_"+tc.name, func(t *testing.T) {
+			t.Parallel()
 			asserter := helper.Asserter{T: t}
 			saveCWD := helper.SaveCWD()
 			defer saveCWD()
@@ -322,6 +329,7 @@ func TestGenerateSnapManifest(t *testing.T) {
 // while building a snap image. This is achieved by mocking functions
 func TestFailedPopulateSnapRootfsContents(t *testing.T) {
 	t.Run("test_failed_populate_snap_rootfs_contents", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine SnapStateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -370,6 +378,7 @@ func TestFailedPopulateSnapRootfsContents(t *testing.T) {
 // TestFailedGenerateSnapManifest tests if snap-based image manifest generation failures are catched
 func TestFailedGenerateSnapManifest(t *testing.T) {
 	t.Run("test_failed_generate_snap_manifest", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -413,6 +422,7 @@ func TestSnapFlagSyntax(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("test_snap_flag_syntax_"+tc.name, func(t *testing.T) {
+			t.Parallel()
 			if runtime.GOARCH != "amd64" {
 				t.Skip("Test for amd64 only")
 			}
@@ -497,6 +507,7 @@ func TestSnapFlagSyntax(t *testing.T) {
 // of a snap is installed as a result
 func TestValidationFlag(t *testing.T) {
 	t.Run("test_validation_flag", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -533,6 +544,7 @@ func TestValidationFlag(t *testing.T) {
 // LP: #1968205
 func TestGadgetEdgeCases(t *testing.T) {
 	t.Run("test_gadget_edge_cases", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()
@@ -563,6 +575,7 @@ func TestGadgetEdgeCases(t *testing.T) {
 
 func TestPreseedFlag(t *testing.T) {
 	t.Run("test_preseed_flag", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		saveCWD := helper.SaveCWD()
 		defer saveCWD()

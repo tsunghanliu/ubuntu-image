@@ -24,6 +24,7 @@ import (
 // TestMaxOffset tests the functionality of the maxOffset function
 func TestMaxOffset(t *testing.T) {
 	t.Run("test_max_offset", func(t *testing.T) {
+		t.Parallel()
 		lesser := quantity.Offset(0)
 		greater := quantity.Offset(1)
 
@@ -77,6 +78,7 @@ func TestFailedRunHooks(t *testing.T) {
 // TestFailedHandleSecureBoot tests failures in the handleSecureBoot function by mocking functions
 func TestFailedHandleSecureBoot(t *testing.T) {
 	t.Run("test_failed_handle_secure_boot", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -128,6 +130,7 @@ func TestFailedHandleSecureBoot(t *testing.T) {
 // function by mocking functions, for piboot
 func TestFailedHandleSecureBootPiboot(t *testing.T) {
 	t.Run("test_failed_handle_secure_boot_piboot", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -179,6 +182,7 @@ func TestFailedHandleSecureBootPiboot(t *testing.T) {
 // TestHandleLkBootloader tests that the handleLkBootloader function runs successfully
 func TestHandleLkBootloader(t *testing.T) {
 	t.Run("test_handle_lk_bootloader", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -216,6 +220,7 @@ func TestHandleLkBootloader(t *testing.T) {
 // TestFailedHandleLkBootloader tests failures in handleLkBootloader by mocking functions
 func TestFailedHandleLkBootloader(t *testing.T) {
 	t.Run("test_failed_handle_lk_bootloader", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -271,6 +276,7 @@ func TestFailedHandleLkBootloader(t *testing.T) {
 // functions and setting invalid bs= arguments in dd
 func TestFailedCopyStructureContent(t *testing.T) {
 	t.Run("test_failed_copy_structure_content", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -352,6 +358,7 @@ func TestFailedCopyStructureContent(t *testing.T) {
 // state machine has finished running
 func TestCleanup(t *testing.T) {
 	t.Run("test_cleanup", func(t *testing.T) {
+		t.Parallel()
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
 		stateMachine.Run()
@@ -366,6 +373,7 @@ func TestCleanup(t *testing.T) {
 // TestFailedCleanup tests a failure in os.RemoveAll while deleting the temporary directory
 func TestFailedCleanup(t *testing.T) {
 	t.Run("test_failed_cleanup", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -384,6 +392,7 @@ func TestFailedCleanup(t *testing.T) {
 // with a nil pointer to stateMachine.GadgetInfo
 func TestFailedCalculateImageSize(t *testing.T) {
 	t.Run("test_failed_calculate_image_size", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -395,6 +404,7 @@ func TestFailedCalculateImageSize(t *testing.T) {
 // TestFailedWriteOffsetValues tests various error scenarios for writeOffsetValues
 func TestFailedWriteOffsetValues(t *testing.T) {
 	t.Run("test_failed_write_offset_values", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -437,6 +447,7 @@ func TestFailedWriteOffsetValues(t *testing.T) {
 // It also ensures that the size is corrected in the structure struct
 func TestWarningRootfsSizeTooSmall(t *testing.T) {
 	t.Run("test_warning_rootfs_size_too_small", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -543,6 +554,7 @@ func TestGenerateUniqueDiskID(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("test_generate_unique_diskid_"+tc.name, func(t *testing.T) {
+			t.Parallel()
 			asserter := helper.Asserter{T: t}
 			// create a test rng reader, using data from our testcase
 			ithRead := 0
@@ -588,6 +600,7 @@ func TestGenerateUniqueDiskID(t *testing.T) {
 // TestFailedRemovePreseeding tests various failure scenarios in the removePreseeding function
 func TestFailedRemovePreseeding(t *testing.T) {
 	t.Run("test_failed_remove_preseeding", func(t *testing.T) {
+		t.Parallel()
 		asserter := helper.Asserter{T: t}
 		var stateMachine StateMachine
 		stateMachine.commonFlags, stateMachine.stateMachineFlags = helper.InitCommonOpts()
@@ -658,6 +671,7 @@ func TestFailedRemovePreseeding(t *testing.T) {
 // TestGetHostArch unit tests the getHostArch function
 func TestGetHostArch(t *testing.T) {
 	t.Run("test_get_host_arch", func(t *testing.T) {
+		t.Parallel()
 		hostArch := getHostArch()
 		switch runtime.GOARCH {
 		case "amd64":
@@ -707,6 +721,7 @@ func TestGetHostArch(t *testing.T) {
 // it returns a string with length greater than zero
 func TestGetHostSuite(t *testing.T) {
 	t.Run("test_get_host_suite", func(t *testing.T) {
+		t.Parallel()
 		hostSuite := getHostSuite()
 		if len(hostSuite) == 0 {
 			t.Error("getHostSuite could not get the host suite")
@@ -741,6 +756,7 @@ func TestGetQemuStaticForArch(t *testing.T) {
 // TestRemovePreseeding unit tests the removePreseeding function
 func TestRemovePreseeding(t *testing.T) {
 	t.Run("test_remove_preseeding", func(t *testing.T) {
+		t.Parallel()
 		if runtime.GOARCH != "amd64" {
 			t.Skip("Test for amd64 only")
 		}
@@ -790,6 +806,7 @@ func TestGenerateGerminateCmd(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run("test_generate_germinate_cmd_"+tc.name, func(t *testing.T) {
+			t.Parallel()
 			imageDef := ImageDefinition{
 				Architecture: tc.name,
 				Rootfs: &RootfsType{
@@ -811,6 +828,49 @@ func TestGenerateGerminateCmd(t *testing.T) {
 			if !strings.Contains(germinateCmd.String(), "--components=main,universe") {
 				t.Errorf("Expected germinate command \"%s\" to contain "+
 					"\"--components=main,universe\"", germinateCmd.String())
+			}
+		})
+	}
+}
+
+
+// TestParseSnapsAndChannels unit tests the parseSnapsAndChannels function
+func TestParseSnapsAndChannels(t *testing.T) {
+	testCases := []struct {
+		name   string
+		snaps  []string
+		expectedSnaps []string
+		expectedChannels map[string]string
+	}{
+		{
+			"no_channel_specified",
+			[]string{"hello", "core20"},
+			[]string{"hello", "core20"},
+			map[string]string{"hello": "stable", "core20": "stable"},
+		},
+		{
+			"channel_specified",
+			[]string{"hello=edge", "core20=candidate"},
+			[]string{"hello", "core20"},
+			map[string]string{"hello": "edge", "core20": "candidate"},
+		},
+	}
+	for _, tc := range testCases {
+		t.Run("test_parse_snaps_and_channels_"+tc.name, func(t *testing.T) {
+			t.Parallel()
+			asserter := helper.Asserter{T: t}
+
+			snaps, channels, err := parseSnapsAndChannels(tc.snaps)
+			asserter.AssertErrNil(err, true)
+
+			if !reflect.DeepEqual(snaps, tc.expectedSnaps) {
+				t.Errorf("expected snap list \"%v\", but got \"%v\"",
+					tc.expectedSnaps, snaps)
+			}
+
+			if !reflect.DeepEqual(channels, tc.expectedChannels) {
+				t.Errorf("expected channel list \"%v\", but got \"%v\"",
+					tc.expectedChannels, channels)
 			}
 		})
 	}
