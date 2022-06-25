@@ -217,7 +217,7 @@ func (stateMachine *StateMachine) copyStructureContent(volume *gadget.Volume,
 			}
 		}
 		// use mkfs functions from snapd to create the filesystems
-		if structure.Content == nil {
+		if structure.Content == nil && structure.Role != gadget.SystemData && structure.Role != gadget.SystemSeed {
 			err := mkfsMake(structure.Filesystem, partImg, structure.Label,
 				structure.Size, stateMachine.SectorSize)
 			if err != nil {
